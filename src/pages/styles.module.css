@@ -1,23 +1,23 @@
-.index-page__links {
+.links {
   list-style: none;
   padding-left: 0;
 }
 
-.index-page__link {
+.link {
   font-weight: bold;
   display: inline-flex;
   gap: 5px;
 }
 
-.index-page__link-item + .index-page__link-item {
+.linkItem + .linkItem {
   margin-top: 10px;
 }
 
-.index-page__link-icon {
+.linkIcon {
   width: 20px;
   display: block;
 }
 
-.index-page__link-icon svg {
+.linkIcon svg {
   display: block;
 }

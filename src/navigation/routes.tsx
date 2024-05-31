@@ -1,28 +1,17 @@
-import { IndexPage } from '@/pages/IndexPage/IndexPage';
-import { InitDataPage } from '@/pages/InitDataPage/InitDataPage';
-import { LaunchParamsPage } from '@/pages/LaunchParamsPage/LaunchParamsPage.jsx';
-import { ThemeParamsPage } from '@/pages/ThemeParamsPage/ThemeParamsPage.jsx';
-import { TONConnectPage } from '@/pages/TONConnectPage/TONConnectPage';
+import type { JSX } from 'react';
 
-/**
- * @typedef {object} Route
- * @property {string} path
- * @property {import('react').ComponentType} Component
- * @property {string} [title]
- * @property {import('react').JSX.Element} [icon]
- */
+interface Route {
+  path: string;
+  title?: string;
+  icon?: JSX.Element;
+}
 
-/**
- * @type {Route[]}
- */
-export const routes = [
-  { path: '/', Component: IndexPage },
-  { path: '/init-data', Component: InitDataPage, title: 'Init Data' },
-  { path: '/theme-params', Component: ThemeParamsPage, title: 'Theme Params' },
-  { path: '/launch-params', Component: LaunchParamsPage, title: 'Launch Params' },
+export const routes: Route[] = [
+  { path: '/init-data', title: 'Init Data' },
+  { path: '/theme-params', title: 'Theme Params' },
+  { path: '/launch-params', title: 'Launch Params' },
   {
     path: '/ton-connect',
-    Component: TONConnectPage,
     title: 'TON Connect',
     icon: (
       <svg

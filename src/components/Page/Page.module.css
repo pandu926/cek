@@ -1,8 +1,8 @@
-.page {
+.root {
   padding: 0 10px;
   box-sizing: border-box;
 }
 
-.page__disclaimer {
+.disclaimer {
   margin-bottom: 16px;
 }

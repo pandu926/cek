@@ -1,19 +1,18 @@
 import { useUtils } from '@tma.js/sdk-react';
 import { TonConnectButton, useTonWallet } from '@tonconnect/ui-react';
+import type { FC, ReactNode } from 'react';
 
-import { DisplayData } from '@/components/DisplayData/DisplayData.jsx';
-import { Link } from '@/components/Link/Link.jsx';
-import { Page } from '@/components/Page/Page.jsx';
+import { DisplayData } from '@/components/DisplayData/DisplayData';
+import { Link } from '@/components/Link/Link';
+import { Page } from '@/components/Page/Page';
 
-import './TONConnectPage.css';
+import styles from './styles.module.css';
+import { useDidMount } from '@/hooks/useDidMount';
 
-/**
- * @returns {JSX.Element}
- */
-export function TONConnectPage() {
+function Inner() {
   const wallet = useTonWallet();
-  const utils = useUtils();
-  let content;
+  const utils = useUtils(true);
+  let content: ReactNode;
 
   if (wallet) {
     const {
@@ -24,29 +23,29 @@ export function TONConnectPage() {
     content = (
       <>
         {'imageUrl' in wallet && (
-          <div className="ton-connect-page__provider">
+          <div className={styles.provider}>
             <img
-              className="ton-connect-page__provider-image"
+              className={styles.providerImage}
               alt="Provider logo"
               src={wallet.imageUrl}
               width={60}
               height={60}
             />
-            <div className="ton-connect-page__provider-meta">
-              <p className="ton-connect-page__provider-wallet-name">
+            <div className={styles.providerMeta}>
+              <p className={styles.providerWalletName}>
                 {wallet.name}
                 &nbsp;
-                <span className="ton-connect-page__provider-app-name">
+                <span className={styles.providerAppName}>
                   (
                   {wallet.appName}
                   )
                 </span>
               </p>
               <Link
-                to={wallet.aboutUrl}
+                href={wallet.aboutUrl}
                 onClick={(e) => {
                   e.preventDefault();
-                  utils.openLink(wallet.aboutUrl);
+                  utils && utils.openLink(wallet.aboutUrl);
                 }}
               >
                 About connected wallet
@@ -72,11 +71,21 @@ export function TONConnectPage() {
   }
 
   return (
-    <Page title="TON Connect">
+    <>
       {content}
-      <div className="ton-connect-page__button-container">
-        <TonConnectButton />
+      <div className={styles.buttonContainer}>
+        <TonConnectButton/>
       </div>
-    </Page>
+    </>
   );
 }
+
+export default function TONConnectPage() {
+  const didMount = useDidMount();
+
+  return (
+    <Page title="TON Connect">
+      {didMount ? <Inner/> : 'Loading'}
+    </Page>
+  );
+};

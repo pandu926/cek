@@ -1,10 +1,10 @@
-.rgb {
+.root {
   display: inline-flex;
   align-items: center;
   gap: 5px;
 }
 
-.rgb__icon {
+.icon {
   width: 18px;
   aspect-ratio: 1;
   border: 1px solid #555;

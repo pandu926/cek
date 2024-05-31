@@ -1,33 +1,32 @@
-.ton-connect-page__button-container {
+.buttonContainer {
   display: flex;
   align-items: center;
   justify-content: flex-end;
 }
 
-.ton-connect-page__provider {
+.provider {
   display: flex;
   align-items: center;
   gap: 15px;
   margin-bottom: 16px;
 }
 
-.ton-connect-page__provider-image {
+.providerImage {
   border-radius: 5px;
 }
 
-.ton-connect-page__provider-meta {
+.providerMeta {
   display: flex;
   flex-direction: column;
-  /*gap: 15px;*/
 }
 
-.ton-connect-page__provider-wallet-name {
+.providerWalletName {
   font-weight: bold;
   font-size: 20px;
   margin: 0;
 }
 
-.ton-connect-page__provider-app-name {
+.providerAppName {
   opacity: .4;
   font-weight: 400;
   font-size: 14px;
